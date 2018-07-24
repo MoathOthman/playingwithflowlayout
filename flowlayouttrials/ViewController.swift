@@ -14,11 +14,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionview.delegate = self
-        collectionview.dataSource = self 
+        collectionview.dataSource = self
+//        collectionview.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 14
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -28,6 +29,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOffset = CGSize(width: 8, height: 0)
         cell.layer.shadowOpacity = 0.3
+        let imagevies = cell.contentView.viewWithTag(2) as! UIImageView
+        if indexPath.row % 3 == 0 {
+            imagevies.image = #imageLiteral(resourceName: "Junk-Food-PNG-File.png")
+        } else if indexPath.row % 3 == 2 {
+            imagevies.image = #imageLiteral(resourceName: "receta-hamburguesa-big-mac-D_NQ_NP_331711-MLV20609757976_022016-F.jpg")
+        } else {
+            imagevies.image = #imageLiteral(resourceName: "X-TUDO-Cópia-600x600.png")
+        }
         return cell 
     }
     
